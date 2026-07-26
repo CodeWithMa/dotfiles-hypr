@@ -5,8 +5,15 @@
 -- See https://wiki.hypr.land/Configuring/Window-Rules/ for more
 -- See https://wiki.hypr.land/Configuring/Workspace-Rules/ for workspace rules
 
--- Example windowrule
--- windowrule = float,class:^(kitty)$,title:^(kitty)$
+-- Workspace Rules
+
+-- Workspace 1 is the default for main monitor
+hl.workspace_rule({ workspace = "1", monitor = "HDMI-A-3", default = true })
+-- Workspace 11 is the default for monitor DP-2
+hl.workspace_rule({ workspace = "11", monitor = "DP-2", default = true })
+
+-- Window Rules
+
 -- Ignore maximize requests from apps. You'll probably like this.
 
 hl.window_rule({
