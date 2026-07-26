@@ -31,51 +31,32 @@ hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "V", hl.dsp.layout("preselect u"
 hl.bind(mainMod .. " + " .. "V", hl.dsp.layout("preselect d"))
 
 -- Move focus with mainMod + arrow keys
-
-hl.bind(mainMod .. " + " .. "left", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + " .. "right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + " .. "up", hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + " .. "down", hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 
 -- Move window with mainMod + shift + arrow keys
 
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "left", { direction = "l" })
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "right", { direction = "r" })
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "up", { direction = "u" })
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "down", { direction = "d" })
+hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "left", hl.dsp.window.move({ direction = "l" }))
+hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "right", hl.dsp.window.move({ direction = "r" }))
+hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "up", hl.dsp.window.move({ direction = "u" }))
+hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "down", hl.dsp.window.move({ direction = "d" }))
 
 -- Switch workspaces with mainMod + [0-9]
-
-hl.bind(mainMod .. " + " .. 1, hl.dsp.focus({ workspace = 1 }))
-hl.bind(mainMod .. " + " .. 2, hl.dsp.focus({ workspace = 2 }))
-hl.bind(mainMod .. " + " .. 3, hl.dsp.focus({ workspace = 3 }))
-hl.bind(mainMod .. " + " .. 4, hl.dsp.focus({ workspace = 4 }))
-hl.bind(mainMod .. " + " .. 5, hl.dsp.focus({ workspace = 5 }))
-hl.bind(mainMod .. " + " .. 6, hl.dsp.focus({ workspace = 6 }))
-hl.bind(mainMod .. " + " .. 7, hl.dsp.focus({ workspace = 7 }))
-hl.bind(mainMod .. " + " .. 8, hl.dsp.focus({ workspace = 8 }))
-hl.bind(mainMod .. " + " .. 9, hl.dsp.focus({ workspace = 9 }))
-hl.bind(mainMod .. " + " .. 0, hl.dsp.focus({ workspace = 10 }))
-
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
-
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. 1, hl.dsp.window.move({ workspace = 1 }, { follow = false }))
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. 2, hl.dsp.window.move({ workspace = 2 }, { follow = false }))
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. 3, hl.dsp.window.move({ workspace = 3 }, { follow = false }))
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. 4, hl.dsp.window.move({ workspace = 4 }, { follow = false }))
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. 5, hl.dsp.window.move({ workspace = 5 }, { follow = false }))
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. 6, hl.dsp.window.move({ workspace = 6 }, { follow = false }))
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. 7, hl.dsp.window.move({ workspace = 7 }, { follow = false }))
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. 8, hl.dsp.window.move({ workspace = 8 }, { follow = false }))
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. 9, hl.dsp.window.move({ workspace = 9 }, { follow = false }))
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. 0, hl.dsp.window.move({ workspace = 10 }, { follow = false }))
+for i = 1, 10 do
+    local key = i % 10 -- 10 maps to key 0
+    hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
+    hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
+end
 
 -- Move the current workspace to the next or previous monitor
--- TODO Test if this works
+-- TODO workspace = "e" is invalid workspace. Figure out how to give current workspace
 -- TODO: manual review (unknown dispatcher: movecurrentworkspacetomonitor)
-hl.bind("CTRL + ALT + left", hl.dsp.workspace.move({ workspace = "e" }, { monitor = -1 }))
+hl.bind("CTRL + ALT + left", hl.dsp.workspace.move({ workspace = "e", monitor = -1 }))
 -- TODO: manual review (unknown dispatcher: movecurrentworkspacetomonitor)
-hl.bind("CTRL + ALT + right", hl.dsp.workspace.move(({ workspace = "e" }, { monitor = 1 }))
+hl.bind("CTRL + ALT + right", hl.dsp.workspace.move({ workspace = "e", monitor = 1 }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 

@@ -7,10 +7,7 @@
 hl.config({
     input = {
         kb_layout = "germancolemak",
-        kb_variant = {  },
-        kb_model = {  },
         kb_options = "caps:backspace",
-        kb_rules = {  },
         numlock_by_default = true,
 
         follow_mouse = 1,
