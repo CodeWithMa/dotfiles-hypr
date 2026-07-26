@@ -52,8 +52,7 @@ hl.config({
 
 hl.config({
     animations = {
-        -- Default animations, see https://wiki.hypr.land/Configuring/Animations/ for more
-        enabled = true,
+        enabled = false,
     },
 })
 
