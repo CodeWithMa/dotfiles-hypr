@@ -68,9 +68,22 @@ hl.bind(mainMod .. " + " .. "mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + " .. "T", hl.dsp.submap("toggle_submap"))
 
 hl.define_submap("toggle_submap", function()
-    hl.bind("C", hl.dsp.exec_cmd("zsh -c 'copyq toggle; hyprctl dispatch submap reset'"))
-    hl.bind("W", hl.dsp.exec_cmd("zsh -c 'pkill -SIGUSR1 waybar & ; hyprctl dispatch submap reset'"))
-    hl.bind("F", hl.dsp.exec_cmd("zsh -c 'hyprctl dispatch togglefloating; hyprctl dispatch submap reset'"))
+    hl.bind("C",function()
+        hl.dispatch(hl.dsp.exec_cmd("copyq toggle"))
+        hl.dispatch(hl.dsp.submap("reset"))
+    end)
+
+    hl.bind("W",function()
+	hl.dispatch(hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
+        hl.dispatch(hl.dsp.submap("reset"))
+    end)
+
+    hl.bind("F",function()
+	-- TODO not working: hyprctl dispatch togglefloating -> lua
+	hl.dispatch(hl.dsp.exec_cmd("hyprctl dispatch togglefloating"))
+        hl.dispatch(hl.dsp.submap("reset"))
+    end)
+
     -- Back to default submap
     hl.bind("Return", hl.dsp.submap("reset"))
     hl.bind("Escape", hl.dsp.submap("reset"))
