@@ -18,7 +18,8 @@ hl.bind(mainMod .. " + " .. "mouse:272", hl.dsp.window.drag(), { mouse = true })
 
 hl.bind(mainMod .. " + " .. "return", hl.dsp.exec_cmd("alacritty"))
 hl.bind(mainMod .. " + " .. "D", hl.dsp.exec_cmd("rofi -show run -show-icons -theme onedark"))
-hl.bind(mainMod .. " + " .. "L", hl.dsp.exec_cmd("hyprlock"))
+-- hl.bind(mainMod .. " + " .. "L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + " .. "L", hl.dsp.exec_cmd("swaylock --color 333333 --show-failed-attempts"))
 hl.bind(mainMod .. " + " .. "Q", hl.dsp.window.close())
 
 -- Next window created will be split to the left
