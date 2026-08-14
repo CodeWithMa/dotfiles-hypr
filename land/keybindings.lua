@@ -53,11 +53,8 @@ for i = 1, 10 do
 end
 
 -- Move the current workspace to the next or previous monitor
--- TODO workspace = "e" is invalid workspace. Figure out how to give current workspace
--- TODO: manual review (unknown dispatcher: movecurrentworkspacetomonitor)
-hl.bind("CTRL + ALT + left", hl.dsp.workspace.move({ workspace = "e", monitor = -1 }))
--- TODO: manual review (unknown dispatcher: movecurrentworkspacetomonitor)
-hl.bind("CTRL + ALT + right", hl.dsp.workspace.move({ workspace = "e", monitor = 1 }))
+hl.bind("CTRL + ALT + left", hl.dsp.workspace.move({ monitor = -1 }))
+hl.bind("CTRL + ALT + right", hl.dsp.workspace.move({ monitor = 1 }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 
