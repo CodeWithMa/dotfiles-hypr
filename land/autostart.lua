@@ -5,7 +5,7 @@
 hl.on("hyprland.start", function()
     hl.exec_cmd("[workspace 1 silent] alacritty")
     hl.exec_cmd("[workspace 11 silent] alacritty -e btop")
-    hl.exec_cmd("[workspace 11 silent] alacritty -e nload-rs -i 100000 -o 40000")
+    hl.exec_cmd("[workspace 11 silent] alacritty -e nload-rs -i 100000 -o 40000 wg0")
     hl.exec_cmd("copyq")
     hl.exec_cmd("pidof fcitx5 || fcitx5")
     hl.exec_cmd("waybar")
